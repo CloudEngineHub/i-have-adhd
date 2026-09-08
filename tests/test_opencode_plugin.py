@@ -1,3 +1,4 @@
+import json
 import os
 import shutil
 import subprocess
@@ -24,15 +25,18 @@ class OpenCodePluginTest(unittest.TestCase):
         self.config_dir = Path(self.temp_dir.name) / "config"
         (self.config_dir / "opencode").mkdir(parents=True)
 
-    def run_plugin(self):
+    def run_plugin(self, mode=None):
         env = os.environ.copy()
         env["XDG_CONFIG_HOME"] = str(self.config_dir)
+        args = [
+            "node",
+            str(ROOT / "tests" / "opencode_plugin_driver.mjs"),
+            str(self.plugin_root / ".opencode" / "plugins" / "i-have-adhd.mjs"),
+        ]
+        if mode:
+            args.append(mode)
         return subprocess.run(
-            [
-                "node",
-                str(ROOT / "tests" / "opencode_plugin_driver.mjs"),
-                str(self.plugin_root / ".opencode" / "plugins" / "i-have-adhd.mjs"),
-            ],
+            args,
             check=False,
             capture_output=True,
             text=True,
@@ -64,6 +68,24 @@ class OpenCodePluginTest(unittest.TestCase):
         result = self.run_plugin()
         self.assertEqual(0, result.returncode, result.stderr)
         self.assertIn("Fixture body, fence never closed.", result.stdout)
+
+    def test_config_hook_registers_the_slash_command(self):
+        # Regression test for #140: a global install (plugin loaded from a
+        # path outside any checkout, no project-scope .opencode/command/
+        # directory in play) must still get /i-have-adhd, because OpenCode's
+        # skill-sourced commands are not surfaced in the TUI's `/` menu.
+        result = self.run_plugin(mode="config")
+        self.assertEqual(0, result.returncode, result.stderr)
+        config = json.loads(result.stdout)
+        command = config["command"]["i-have-adhd"]
+        self.assertIn("ADHD", command["description"])
+        self.assertIn("stop adhd mode", command["template"])
+
+    def test_config_hook_still_registers_the_skills_path(self):
+        result = self.run_plugin(mode="config")
+        self.assertEqual(0, result.returncode, result.stderr)
+        config = json.loads(result.stdout)
+        self.assertIn(str(self.plugin_root / "skills"), config["skills"]["paths"])
 
 
 if __name__ == "__main__":

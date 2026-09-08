@@ -23,6 +23,19 @@ import { fileURLToPath } from 'url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const skillsDir = path.resolve(__dirname, '../../skills');
 const skillPath = path.join(skillsDir, 'i-have-adhd', 'SKILL.md');
+const commandPath = path.join(__dirname, '..', 'command', 'i-have-adhd.md');
+
+// Parse the project-scope command file (frontmatter description + template
+// body) so the global-install route gets the same command without a second
+// copy of the text to keep in sync.
+function commandDefinition() {
+  const raw = fs.readFileSync(commandPath, 'utf8');
+  const match = raw.match(/^---\r?\n([\s\S]*?)\r?\n---[^\S\r\n]*(?:\r?\n|$)([\s\S]*)$/);
+  if (!match) return { description: undefined, template: raw };
+  const [, frontmatter, template] = match;
+  const description = frontmatter.match(/^description:\s*(.+)$/m)?.[1]?.trim();
+  return { description, template };
+}
 
 // Always-on opt-in flag, mirroring Claude Code's ~/.claude/.i-have-adhd-always
 // but under OpenCode's config dir so the two tools stay independent.
@@ -50,6 +63,20 @@ export default async () => {
       config.skills = config.skills || {};
       config.skills.paths = config.skills.paths || [];
       if (!config.skills.paths.includes(skillsDir)) config.skills.paths.push(skillsDir);
+
+      // Register /i-have-adhd directly from the plugin config so a global
+      // install (plugin path outside the checkout, opencode run from an
+      // unrelated project) gets the command too. Project-scope runs also
+      // pick up .opencode/command/i-have-adhd.md natively; whichever loads
+      // first wins, and both carry the same text (see commandDefinition()).
+      try {
+        config.command = config.command || {};
+        if (!config.command['i-have-adhd']) {
+          config.command['i-have-adhd'] = commandDefinition();
+        }
+      } catch (e) {
+        // Missing/unreadable command file should not break config loading.
+      }
     },
 
     // Always-on: append the ruleset to the system prompt every turn while the
