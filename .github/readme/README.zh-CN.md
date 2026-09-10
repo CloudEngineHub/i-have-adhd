@@ -14,7 +14,8 @@
   <a href="README.pt-BR.md" title="Português (Brasil)" aria-label="Português (Brasil)">🇧🇷</a> ·
   <a href="README.ja.md" title="日本語" aria-label="日本語">🇯🇵</a> ·
   <a href="README.vi.md" title="Tiếng Việt" aria-label="Tiếng Việt">🇻🇳</a> ·
-  <a href="README.ko.md" title="한국어" aria-label="한국어">🇰🇷</a>
+  <a href="README.ko.md" title="한국어" aria-label="한국어">🇰🇷</a> ·
+  <a href="README.th.md" title="ภาษาไทย" aria-label="ภาษาไทย">🇹🇭</a>
 </p>
 
 
@@ -69,7 +70,7 @@
 6. 给出明确的时间估计（用分钟，不说“一会儿”）。
 7. 让成果清晰可见。
 8. 客观陈述错误。
-9. 每个列表最多 5 项。
+9. 将长列表按重要性排序并分组，每组尽量不超过 5 项，不遗漏相关项目。
 10. 不写开场白、回顾或结束语。
 
 ## 自定义

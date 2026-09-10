@@ -14,7 +14,8 @@
   <strong title="Português (Brasil)" aria-label="Português (Brasil)">🇧🇷</strong> ·
   <a href="README.ja.md" title="日本語" aria-label="日本語">🇯🇵</a> ·
   <a href="README.vi.md" title="Tiếng Việt" aria-label="Tiếng Việt">🇻🇳</a> ·
-  <a href="README.ko.md" title="한국어" aria-label="한국어">🇰🇷</a>
+  <a href="README.ko.md" title="한국어" aria-label="한국어">🇰🇷</a> ·
+  <a href="README.th.md" title="ภาษาไทย" aria-label="ภาษาไทย">🇹🇭</a>
 </p>
 
 
@@ -69,7 +70,7 @@ Uma skill para o seu assistente de código que impede que ele enterre a resposta
 6. Estimativas de tempo específicas (minutos, não "um pouco").
 7. Deixe as conquistas visíveis.
 8. Erros relatados de forma objetiva.
-9. Limite listas a 5 itens.
+9. Ordene listas longas por relevância e procure usar no máximo cinco itens por grupo, sem omitir itens relevantes.
 10. Sem preâmbulo. Sem recapitulação. Sem frases de encerramento.
 
 ## Personalize

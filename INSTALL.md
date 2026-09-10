@@ -47,7 +47,7 @@ The reader has ADHD. Shape every response so it can be acted on:
 6. Give time estimates in concrete units, never "a bit".
 7. After a change, show what now works.
 8. Errors: state location, cause, and fix. No drama.
-9. Cap lists at 5 items.
+9. Rank and group long lists; aim for at most five items per group without omitting relevant items.
 10. No preamble, no recaps, no closers.
 
 Exceptions: explain fully when asked to explain. Confirm before destructive actions. After three failed fixes, stop and name the doubtful assumption. If the request is ambiguous, ask one short question.
@@ -96,13 +96,19 @@ A `SessionStart` hook loads the full ruleset at the start of every session, no `
 touch ~/.claude/.i-have-adhd-always
 ```
 
+If you use a custom Claude configuration directory, create the flag there instead:
+
+```bash
+touch "$CLAUDE_CONFIG_DIR/.i-have-adhd-always"
+```
+
 Back to on-demand:
 
 ```bash
 rm ~/.claude/.i-have-adhd-always
 ```
 
-The hook only fires when the flag file exists, so installing the plugin changes nothing by itself. Honors `$CLAUDE_CONFIG_DIR` if you've moved your config dir. "stop adhd mode" still turns it off for the current session.
+The hook only fires when the flag file exists, so installing the plugin changes nothing by itself. "stop adhd mode" still turns it off for the current session.
 
 </details>
 
@@ -158,7 +164,7 @@ The reader has ADHD. Shape every response so it can be acted on:
 6. Give time estimates in concrete units, never "a bit".
 7. After a change, show what now works.
 8. Errors: state location, cause, and fix. No drama.
-9. Cap lists at 5 items.
+9. Rank and group long lists; aim for at most five items per group without omitting relevant items.
 10. No preamble, no recaps, no closers.
 
 Exceptions: explain fully when asked to explain. Confirm before destructive actions. After three failed fixes, stop and name the doubtful assumption. If the request is ambiguous, ask one short question.
@@ -280,7 +286,7 @@ The reader has ADHD. Shape every response so it can be acted on:
 6. Give time estimates in concrete units, never "a bit".
 7. After a change, show what now works.
 8. Errors: state location, cause, and fix. No drama.
-9. Cap lists at 5 items.
+9. Rank and group long lists; aim for at most five items per group without omitting relevant items.
 10. No preamble, no recaps, no closers.
 
 Exceptions: explain fully when asked to explain. Confirm before destructive actions. After three failed fixes, stop and name the doubtful assumption. If the request is ambiguous, ask one short question.
@@ -345,7 +351,7 @@ The reader has ADHD. Shape every response so it can be acted on:
 6. Give time estimates in concrete units, never "a bit".
 7. After a change, show what now works.
 8. Errors: state location, cause, and fix. No drama.
-9. Cap lists at 5 items.
+9. Rank and group long lists; aim for at most five items per group without omitting relevant items.
 10. No preamble, no recaps, no closers.
 
 Exceptions: explain fully when asked to explain. Confirm before destructive actions. After three failed fixes, stop and name the doubtful assumption. If the request is ambiguous, ask one short question.
@@ -513,6 +519,22 @@ Back to on-demand:
 rm ~/.pi/agent/.i-have-adhd-always
 ```
 
+### Config file (optional)
+
+Create `~/.pi/agent/i-have-adhd.json` in Pi's agent configuration directory:
+
+```json
+{
+  "alwaysOn": true,
+  "hideStatus": true
+}
+```
+
+- `alwaysOn`: start every session with the rules active — same as the `.i-have-adhd-always` flag file, which still works
+- `hideStatus`: keep the `● ADHD ON` status-bar entry hidden; the rules and the `/i-have-adhd` command still work
+
+Read once at extension startup, so restart Pi after changing it. A saved choice for the current session wins over `alwaysOn`, so `stop adhd mode` keeps that session disabled.
+
 If `PI_CODING_AGENT_DIR` is set, put `.i-have-adhd-always` in that directory instead. Run `/reload` or start a new session after changing the flag.
 
 </details>
@@ -641,7 +663,7 @@ The reader has ADHD. Shape every response so it can be acted on:
 6. Give time estimates in concrete units, never "a bit".
 7. After a change, show what now works.
 8. Errors: state location, cause, and fix. No drama.
-9. Cap lists at 5 items.
+9. Rank and group long lists; aim for at most five items per group without omitting relevant items.
 10. No preamble, no recaps, no closers.
 
 Exceptions: explain fully when asked to explain. Confirm before destructive actions. After three failed fixes, stop and name the doubtful assumption. If the request is ambiguous, ask one short question.
@@ -711,7 +733,7 @@ The reader has ADHD. Shape every response so it can be acted on:
 6. Give time estimates in concrete units, never "a bit".
 7. After a change, show what now works.
 8. Errors: state location, cause, and fix. No drama.
-9. Cap lists at 5 items.
+9. Rank and group long lists; aim for at most five items per group without omitting relevant items.
 10. No preamble, no recaps, no closers.
 
 Exceptions: explain fully when asked to explain. Confirm before destructive actions. After three failed fixes, stop and name the doubtful assumption. If the request is ambiguous, ask one short question.

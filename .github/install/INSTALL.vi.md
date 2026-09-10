@@ -47,7 +47,7 @@ Người đọc có ADHD. Hãy định dạng mọi phản hồi để họ có 
 6. Ước tính thời gian bằng đơn vị cụ thể, không nói "một chút".
 7. Sau khi thay đổi, hãy cho biết điều gì hiện đã hoạt động.
 8. Với lỗi, nêu vị trí, nguyên nhân và cách sửa một cách khách quan.
-9. Giới hạn danh sách ở 5 mục.
+9. Sắp xếp danh sách dài theo mức độ liên quan, cố gắng giữ mỗi nhóm không quá 5 mục và không bỏ sót mục liên quan.
 10. Không mở đầu, không tóm tắt lại, không lời kết.
 
 Ngoại lệ: giải thích đầy đủ khi được yêu cầu. Xác nhận trước thao tác phá hủy dữ liệu. Sau ba lần sửa thất bại, dừng lại và nêu giả định đáng ngờ. Nếu yêu cầu mơ hồ, hãy hỏi một câu ngắn.
@@ -96,13 +96,19 @@ Hook `SessionStart` tải toàn bộ bộ quy tắc khi bắt đầu mỗi phiê
 touch ~/.claude/.i-have-adhd-always
 ```
 
+Nếu bạn dùng thư mục cấu hình Claude tùy chỉnh, hãy tạo tệp cờ ở đó thay vào đó:
+
+```bash
+touch "$CLAUDE_CONFIG_DIR/.i-have-adhd-always"
+```
+
 Để trở lại chế độ bật khi cần:
 
 ```bash
 rm ~/.claude/.i-have-adhd-always
 ```
 
-Hook chỉ chạy khi tệp cờ tồn tại, vì vậy chỉ cài plugin sẽ không tự thay đổi gì. Hook tôn trọng `$CLAUDE_CONFIG_DIR` nếu bạn đã chuyển thư mục cấu hình. "stop adhd mode" vẫn tắt chế độ này cho phiên hiện tại.
+Hook chỉ chạy khi tệp cờ tồn tại, vì vậy chỉ cài plugin sẽ không tự thay đổi gì. "stop adhd mode" vẫn tắt chế độ này cho phiên hiện tại.
 
 </details>
 
@@ -157,7 +163,7 @@ Người đọc có ADHD. Hãy định dạng mọi phản hồi để họ có 
 6. Ước tính thời gian bằng đơn vị cụ thể, không nói "một chút".
 7. Sau khi thay đổi, hãy cho biết điều gì hiện đã hoạt động.
 8. Với lỗi, nêu vị trí, nguyên nhân và cách sửa một cách khách quan.
-9. Giới hạn danh sách ở 5 mục.
+9. Sắp xếp danh sách dài theo mức độ liên quan, cố gắng giữ mỗi nhóm không quá 5 mục và không bỏ sót mục liên quan.
 10. Không mở đầu, không tóm tắt lại, không lời kết.
 
 Ngoại lệ: giải thích đầy đủ khi được yêu cầu. Xác nhận trước thao tác phá hủy dữ liệu. Sau ba lần sửa thất bại, dừng lại và nêu giả định đáng ngờ. Nếu yêu cầu mơ hồ, hãy hỏi một câu ngắn.
@@ -279,7 +285,7 @@ Người đọc có ADHD. Hãy định dạng mọi phản hồi để họ có 
 6. Ước tính thời gian bằng đơn vị cụ thể, không nói "một chút".
 7. Sau khi thay đổi, hãy cho biết điều gì hiện đã hoạt động.
 8. Với lỗi, nêu vị trí, nguyên nhân và cách sửa một cách khách quan.
-9. Giới hạn danh sách ở 5 mục.
+9. Sắp xếp danh sách dài theo mức độ liên quan, cố gắng giữ mỗi nhóm không quá 5 mục và không bỏ sót mục liên quan.
 10. Không mở đầu, không tóm tắt lại, không lời kết.
 
 Ngoại lệ: giải thích đầy đủ khi được yêu cầu. Xác nhận trước thao tác phá hủy dữ liệu. Sau ba lần sửa thất bại, dừng lại và nêu giả định đáng ngờ. Nếu yêu cầu mơ hồ, hãy hỏi một câu ngắn.
@@ -343,7 +349,7 @@ Người đọc có ADHD. Hãy định dạng mọi phản hồi để họ có 
 6. Ước tính thời gian bằng đơn vị cụ thể, không nói "một chút".
 7. Sau khi thay đổi, hãy cho biết điều gì hiện đã hoạt động.
 8. Với lỗi, nêu vị trí, nguyên nhân và cách sửa một cách khách quan.
-9. Giới hạn danh sách ở 5 mục.
+9. Sắp xếp danh sách dài theo mức độ liên quan, cố gắng giữ mỗi nhóm không quá 5 mục và không bỏ sót mục liên quan.
 10. Không mở đầu, không tóm tắt lại, không lời kết.
 
 Ngoại lệ: giải thích đầy đủ khi được yêu cầu. Xác nhận trước thao tác phá hủy dữ liệu. Sau ba lần sửa thất bại, dừng lại và nêu giả định đáng ngờ. Nếu yêu cầu mơ hồ, hãy hỏi một câu ngắn.
@@ -444,7 +450,7 @@ Người đọc có ADHD. Hãy định dạng mọi phản hồi để họ có 
 6. Ước tính thời gian bằng đơn vị cụ thể, không nói "một chút".
 7. Sau khi thay đổi, hãy cho biết điều gì hiện đã hoạt động.
 8. Với lỗi, nêu vị trí, nguyên nhân và cách sửa một cách khách quan.
-9. Giới hạn danh sách ở 5 mục.
+9. Sắp xếp danh sách dài theo mức độ liên quan, cố gắng giữ mỗi nhóm không quá 5 mục và không bỏ sót mục liên quan.
 10. Không mở đầu, không tóm tắt lại, không lời kết.
 
 Ngoại lệ: giải thích đầy đủ khi được yêu cầu. Xác nhận trước thao tác phá hủy dữ liệu. Sau ba lần sửa thất bại, dừng lại và nêu giả định đáng ngờ. Nếu yêu cầu mơ hồ, hãy hỏi một câu ngắn.
@@ -545,7 +551,7 @@ Người đọc có ADHD. Hãy định dạng mọi phản hồi để họ có 
 6. Ước tính thời gian bằng đơn vị cụ thể, không nói "một chút".
 7. Sau khi thay đổi, hãy cho biết điều gì hiện đã hoạt động.
 8. Với lỗi, nêu vị trí, nguyên nhân và cách sửa một cách khách quan.
-9. Giới hạn danh sách ở 5 mục.
+9. Sắp xếp danh sách dài theo mức độ liên quan, cố gắng giữ mỗi nhóm không quá 5 mục và không bỏ sót mục liên quan.
 10. Không mở đầu, không tóm tắt lại, không lời kết.
 
 Ngoại lệ: giải thích đầy đủ khi được yêu cầu. Xác nhận trước thao tác phá hủy dữ liệu. Sau ba lần sửa thất bại, dừng lại và nêu giả định đáng ngờ. Nếu yêu cầu mơ hồ, hãy hỏi một câu ngắn.
@@ -615,7 +621,7 @@ Người đọc có ADHD. Hãy định dạng mọi phản hồi để họ có 
 6. Ước tính thời gian bằng đơn vị cụ thể, không nói "một chút".
 7. Sau khi thay đổi, hãy cho biết điều gì hiện đã hoạt động.
 8. Với lỗi, nêu vị trí, nguyên nhân và cách sửa một cách khách quan.
-9. Giới hạn danh sách ở 5 mục.
+9. Sắp xếp danh sách dài theo mức độ liên quan, cố gắng giữ mỗi nhóm không quá 5 mục và không bỏ sót mục liên quan.
 10. Không mở đầu, không tóm tắt lại, không lời kết.
 
 Ngoại lệ: giải thích đầy đủ khi được yêu cầu. Xác nhận trước thao tác phá hủy dữ liệu. Sau ba lần sửa thất bại, dừng lại và nêu giả định đáng ngờ. Nếu yêu cầu mơ hồ, hãy hỏi một câu ngắn.

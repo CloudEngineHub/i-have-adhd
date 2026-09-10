@@ -47,7 +47,7 @@ A pessoa que lê tem TDAH. Estruture cada resposta para que ela possa agir:
 6. Dê estimativas de tempo em unidades concretas, nunca "um pouco".
 7. Após uma alteração, mostre o que agora funciona.
 8. Erros: informe local, causa e correção, sem drama.
-9. Limite listas a 5 itens.
+9. Ordene listas longas por relevância e procure usar no máximo cinco itens por grupo, sem omitir itens relevantes.
 10. Sem preâmbulo, recapitulação ou despedida.
 
 Exceções: explique por completo quando pedirem. Confirme antes de ações destrutivas. Após três tentativas de correção sem sucesso, pare e identifique a suposição duvidosa. Se o pedido for ambíguo, faça uma pergunta curta.
@@ -96,13 +96,19 @@ Um hook `SessionStart` carrega todas as regras no início de cada sessão; não 
 touch ~/.claude/.i-have-adhd-always
 ```
 
+Se você usa um diretório de configuração personalizado do Claude, crie o arquivo de sinalização nele:
+
+```bash
+touch "$CLAUDE_CONFIG_DIR/.i-have-adhd-always"
+```
+
 Para voltar ao modo sob demanda:
 
 ```bash
 rm ~/.claude/.i-have-adhd-always
 ```
 
-O hook só é executado quando o arquivo de sinalização existe, portanto instalar o plugin não muda nada por si só. Ele respeita `$CLAUDE_CONFIG_DIR` caso você tenha movido o diretório de configuração. "stop adhd mode" ainda o desativa na sessão atual.
+O hook só é executado quando o arquivo de sinalização existe, portanto instalar o plugin não muda nada por si só. "stop adhd mode" ainda o desativa na sessão atual.
 
 </details>
 
@@ -157,7 +163,7 @@ A pessoa que lê tem TDAH. Estruture cada resposta para que ela possa agir:
 6. Dê estimativas de tempo em unidades concretas, nunca "um pouco".
 7. Após uma alteração, mostre o que agora funciona.
 8. Erros: informe local, causa e correção, sem drama.
-9. Limite listas a 5 itens.
+9. Ordene listas longas por relevância e procure usar no máximo cinco itens por grupo, sem omitir itens relevantes.
 10. Sem preâmbulo, recapitulação ou despedida.
 
 Exceções: explique por completo quando pedirem. Confirme antes de ações destrutivas. Após três tentativas de correção sem sucesso, pare e identifique a suposição duvidosa. Se o pedido for ambíguo, faça uma pergunta curta.
@@ -279,7 +285,7 @@ A pessoa que lê tem TDAH. Estruture cada resposta para que ela possa agir:
 6. Dê estimativas de tempo em unidades concretas, nunca "um pouco".
 7. Após uma alteração, mostre o que agora funciona.
 8. Erros: informe local, causa e correção, sem drama.
-9. Limite listas a 5 itens.
+9. Ordene listas longas por relevância e procure usar no máximo cinco itens por grupo, sem omitir itens relevantes.
 10. Sem preâmbulo, recapitulação ou despedida.
 
 Exceções: explique por completo quando pedirem. Confirme antes de ações destrutivas. Após três tentativas de correção sem sucesso, pare e identifique a suposição duvidosa. Se o pedido for ambíguo, faça uma pergunta curta.
@@ -343,7 +349,7 @@ A pessoa que lê tem TDAH. Estruture cada resposta para que ela possa agir:
 6. Dê estimativas de tempo em unidades concretas, nunca "um pouco".
 7. Após uma alteração, mostre o que agora funciona.
 8. Erros: informe local, causa e correção, sem drama.
-9. Limite listas a 5 itens.
+9. Ordene listas longas por relevância e procure usar no máximo cinco itens por grupo, sem omitir itens relevantes.
 10. Sem preâmbulo, recapitulação ou despedida.
 
 Exceções: explique por completo quando pedirem. Confirme antes de ações destrutivas. Após três tentativas de correção sem sucesso, pare e identifique a suposição duvidosa. Se o pedido for ambíguo, faça uma pergunta curta.
@@ -444,7 +450,7 @@ A pessoa que lê tem TDAH. Estruture cada resposta para que ela possa agir:
 6. Dê estimativas de tempo em unidades concretas, nunca "um pouco".
 7. Após uma alteração, mostre o que agora funciona.
 8. Erros: informe local, causa e correção, sem drama.
-9. Limite listas a 5 itens.
+9. Ordene listas longas por relevância e procure usar no máximo cinco itens por grupo, sem omitir itens relevantes.
 10. Sem preâmbulo, recapitulação ou despedida.
 
 Exceções: explique por completo quando pedirem. Confirme antes de ações destrutivas. Após três tentativas de correção sem sucesso, pare e identifique a suposição duvidosa. Se o pedido for ambíguo, faça uma pergunta curta.
@@ -545,7 +551,7 @@ A pessoa que lê tem TDAH. Estruture cada resposta para que ela possa agir:
 6. Dê estimativas de tempo em unidades concretas, nunca "um pouco".
 7. Após uma alteração, mostre o que agora funciona.
 8. Erros: informe local, causa e correção, sem drama.
-9. Limite listas a 5 itens.
+9. Ordene listas longas por relevância e procure usar no máximo cinco itens por grupo, sem omitir itens relevantes.
 10. Sem preâmbulo, recapitulação ou despedida.
 
 Exceções: explique por completo quando pedirem. Confirme antes de ações destrutivas. Após três tentativas de correção sem sucesso, pare e identifique a suposição duvidosa. Se o pedido for ambíguo, faça uma pergunta curta.
@@ -615,7 +621,7 @@ A pessoa que lê tem TDAH. Estruture cada resposta para que ela possa agir:
 6. Dê estimativas de tempo em unidades concretas, nunca "um pouco".
 7. Após uma alteração, mostre o que agora funciona.
 8. Erros: informe local, causa e correção, sem drama.
-9. Limite listas a 5 itens.
+9. Ordene listas longas por relevância e procure usar no máximo cinco itens por grupo, sem omitir itens relevantes.
 10. Sem preâmbulo, recapitulação ou despedida.
 
 Exceções: explique por completo quando pedirem. Confirme antes de ações destrutivas. Após três tentativas de correção sem sucesso, pare e identifique a suposição duvidosa. Se o pedido for ambíguo, faça uma pergunta curta.
