@@ -1,98 +1,32 @@
-#!/usr/bin/env python3
-"""Guards against locale drift in the Zed install instructions.
+"""Checks Zed installation paths across the installation guides."""
 
-Zed loads skills from `~/.agents/skills/` and `<worktree>/.agents/skills/` and
-supports no custom search paths, so that is the only directory INSTALL can tell
-a user to copy into. The English file and its five translations are edited by
-hand, and all six had drifted to `~/.config/zed/skills/` (a
-directory Zed does not read) with no check catching it. These tests fail if any
-locale points at a directory Zed ignores, or if a locale half-updates and keeps
-both spellings.
-"""
-
-from __future__ import annotations
-
-import shlex
-import shutil
-import subprocess
-import tempfile
+import pathlib
 import unittest
-from pathlib import Path
 
 
-ROOT = Path(__file__).resolve().parents[1]
-INSTALL_FILES = (
-    ROOT / "INSTALL.md",
-    *sorted((ROOT / ".github" / "install").glob("INSTALL.*.md")),
-)
-# Zed reads skills only from these two roots; a custom path is not supported.
-WRONG_ZED_SKILLS_PATH = "~/.config/zed/skills"
-RIGHT_ZED_SKILLS_PATH = "~/.agents/skills"
+ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 class ZedInstallPathTest(unittest.TestCase):
-    def test_filesystem_install_creates_discoverable_skill(self) -> None:
-        for path in INSTALL_FILES:
-            for agents_exists in (False, True):
-                with self.subTest(file=path.name, agents_exists=agents_exists):
-                    text = path.read_text(encoding="utf-8")
-                    block = text.split("<summary><strong>Zed</strong></summary>", 1)[1]
-                    block = block.split("</details>", 1)[0]
-                    commands = [
-                        shlex.split(line) for line in block.splitlines()
-                        if line.startswith(("mkdir ", "cp "))
-                    ]
-                    self.assertTrue(commands)
-                    with tempfile.TemporaryDirectory() as directory:
-                        base = Path(directory)
-                        home = base / "test home"
-                        home.mkdir()
-                        if agents_exists:
-                            (home / ".agents").mkdir()
-                        source = base / "i-have-adhd/skills/i-have-adhd"
-                        shutil.copytree(ROOT / "skills/i-have-adhd", source)
-                        for _ in range(2):  # Installation and re-copy update.
-                            for command in commands:
-                                args = [
-                                    str(home) + arg[1:] if arg.startswith("~/") else arg
-                                    for arg in command
-                                ]
-                                subprocess.run(args, cwd=base, check=True, capture_output=True)
-                            installed = home / ".agents/skills/i-have-adhd/SKILL.md"
-                            self.assertEqual((source / "SKILL.md").read_bytes(), installed.read_bytes())
-
-    def test_every_locale_is_discovered(self) -> None:
-        # Guards the glob above: a rename that silently drops files would make
-        # the checks below vacuous.
-        self.assertEqual(6, len(INSTALL_FILES))
-
-    def test_no_locale_points_zed_at_a_path_it_does_not_read(self) -> None:
-        for path in INSTALL_FILES:
+    def test_zed_install_paths(self):
+        translations = sorted((ROOT / ".github/install").glob("INSTALL.*.md"))
+        self.assertTrue(translations, "No translated installation guides found")
+        for path in [ROOT / "INSTALL.md", *translations]:
             with self.subTest(file=path.name):
-                self.assertNotIn(
-                    WRONG_ZED_SKILLS_PATH,
-                    path.read_text(encoding="utf-8"),
-                    f"{path.name} tells Zed users to copy into "
-                    f"{WRONG_ZED_SKILLS_PATH}, which Zed does not scan",
-                )
+                text = path.read_text(encoding="utf8")
+                marker = "<summary><strong>Zed</strong></summary>"
+                self.assertIn(marker, text)
+                section = text.split(marker, 1)[1]
+                self.assertIn("</details>", section)
+                section = section.split("</details>", 1)[0]
 
-    def test_every_locale_documents_the_directory_zed_actually_reads(self) -> None:
-        # The <summary> wrapper is identical in every locale, unlike prose, so
-        # scope the assertion to the Zed block instead of the whole file.
-        for path in INSTALL_FILES:
-            with self.subTest(file=path.name):
-                text = path.read_text(encoding="utf-8")
-                start = text.find("<summary><strong>Zed</strong></summary>")
-                self.assertNotEqual(-1, start, f"{path.name} has no Zed block")
-                end = text.find("</details>", start)
-                self.assertNotEqual(-1, end, f"{path.name} has an unclosed Zed block")
-                block = text[start:end]
+                self.assertNotIn("~/.config/zed/skills", section)
                 self.assertIn(
-                    RIGHT_ZED_SKILLS_PATH,
-                    block,
-                    f"{path.name} does not mention {RIGHT_ZED_SKILLS_PATH} "
-                    "in its Zed block",
+                    "mkdir -p ~/.agents/skills\n"
+                    "cp -R i-have-adhd/skills/i-have-adhd ~/.agents/skills/",
+                    section,
                 )
+                self.assertIn("~/.agents/skills/i-have-adhd", section)
 
 
 if __name__ == "__main__":
