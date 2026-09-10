@@ -4,7 +4,7 @@
 Zed loads skills from `~/.agents/skills/` and `<worktree>/.agents/skills/` and
 supports no custom search paths, so that is the only directory INSTALL can tell
 a user to copy into. The English file and its five translations are edited by
-hand, and two of them had already drifted to `~/.config/zed/skills/` (a
+hand, and all six had drifted to `~/.config/zed/skills/` (a
 directory Zed does not read) with no check catching it. These tests fail if any
 locale points at a directory Zed ignores, or if a locale half-updates and keeps
 both spellings.
@@ -12,6 +12,10 @@ both spellings.
 
 from __future__ import annotations
 
+import shlex
+import shutil
+import subprocess
+import tempfile
 import unittest
 from pathlib import Path
 
@@ -27,6 +31,36 @@ RIGHT_ZED_SKILLS_PATH = "~/.agents/skills"
 
 
 class ZedInstallPathTest(unittest.TestCase):
+    def test_filesystem_install_creates_discoverable_skill(self) -> None:
+        for path in INSTALL_FILES:
+            for agents_exists in (False, True):
+                with self.subTest(file=path.name, agents_exists=agents_exists):
+                    text = path.read_text(encoding="utf-8")
+                    block = text.split("<summary><strong>Zed</strong></summary>", 1)[1]
+                    block = block.split("</details>", 1)[0]
+                    commands = [
+                        shlex.split(line) for line in block.splitlines()
+                        if line.startswith(("mkdir ", "cp "))
+                    ]
+                    self.assertTrue(commands)
+                    with tempfile.TemporaryDirectory() as directory:
+                        base = Path(directory)
+                        home = base / "test home"
+                        home.mkdir()
+                        if agents_exists:
+                            (home / ".agents").mkdir()
+                        source = base / "i-have-adhd/skills/i-have-adhd"
+                        shutil.copytree(ROOT / "skills/i-have-adhd", source)
+                        for _ in range(2):  # Installation and re-copy update.
+                            for command in commands:
+                                args = [
+                                    str(home) + arg[1:] if arg.startswith("~/") else arg
+                                    for arg in command
+                                ]
+                                subprocess.run(args, cwd=base, check=True, capture_output=True)
+                            installed = home / ".agents/skills/i-have-adhd/SKILL.md"
+                            self.assertEqual((source / "SKILL.md").read_bytes(), installed.read_bytes())
+
     def test_every_locale_is_discovered(self) -> None:
         # Guards the glob above: a rename that silently drops files would make
         # the checks below vacuous.

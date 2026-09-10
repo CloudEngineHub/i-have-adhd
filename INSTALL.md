@@ -631,6 +631,7 @@ Prefer the filesystem? Clone the repo and drop the skill folder into your user s
 
 ```bash
 git clone https://github.com/ayghri/i-have-adhd
+mkdir -p ~/.agents/skills
 cp -R i-have-adhd/skills/i-have-adhd ~/.agents/skills/
 ```
 

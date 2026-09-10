@@ -519,6 +519,7 @@ Muốn dùng hệ thống tệp? Clone repo và đặt thư mục skill vào th�
 
 ```bash
 git clone https://github.com/ayghri/i-have-adhd
+mkdir -p ~/.agents/skills
 cp -R i-have-adhd/skills/i-have-adhd ~/.agents/skills/
 ```
 
