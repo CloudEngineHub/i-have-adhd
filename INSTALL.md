@@ -62,6 +62,9 @@ AstronClaw supports importing a Markdown file as a custom skill. This route uses
 the existing `SKILL.md`; see its [official skills guide](https://github.com/iflytek/astronclaw-tutorial/blob/main/docs/guide/astronclaw/skills.md)
 for the upload and management controls.
 
+This procedure follows AstronClaw's documentation but has not been tested with
+this skill. Check the exported instructions before enabling it.
+
 ### Install
 
 1. Download the [canonical SKILL.md](https://raw.githubusercontent.com/ayghri/i-have-adhd/main/skills/i-have-adhd/SKILL.md) and save it as `SKILL.md`. Review its contents before uploading.

@@ -61,6 +61,9 @@ agy plugin uninstall i-have-adhd
 AstronClaw 支持将 Markdown 文件导入为自定义技能。此方式使用现有的 `SKILL.md`；
 上传和管理入口参见[官方技能指南](https://github.com/iflytek/astronclaw-tutorial/blob/main/docs/guide/astronclaw/skills.md)。
 
+以下步骤依据 AstronClaw 官方文档编写，但尚未使用本技能进行实际测试。
+启用前，请检查导出的技能指令。
+
 ### 安装
 
 1. 下载[技能源文件 SKILL.md](https://raw.githubusercontent.com/ayghri/i-have-adhd/main/skills/i-have-adhd/SKILL.md)，保存为 `SKILL.md`，上传前先阅读文件内容。
