@@ -519,7 +519,8 @@ Prefere o sistema de arquivos? Clone o repositório e coloque a pasta da skill n
 
 ```bash
 git clone https://github.com/ayghri/i-have-adhd
-cp -R i-have-adhd/skills/i-have-adhd ~/.config/zed/skills/
+mkdir -p ~/.agents/skills
+cp -R i-have-adhd/skills/i-have-adhd ~/.agents/skills/
 ```
 
 ### Verificar
@@ -532,7 +533,7 @@ Importe novamente pela mesma URL (sobrescreve) ou copie a pasta de novo após `g
 
 ### Desinstalar
 
-Remova `i-have-adhd` do gerenciador de Skills ou exclua `~/.config/zed/skills/i-have-adhd`.
+Remova `i-have-adhd` do gerenciador de Skills ou exclua `~/.agents/skills/i-have-adhd`.
 
 ### Sempre ativo (opcional)
 

@@ -519,7 +519,8 @@ https://github.com/ayghri/i-have-adhd/blob/main/skills/i-have-adhd/SKILL.md
 
 ```bash
 git clone https://github.com/ayghri/i-have-adhd
-cp -R i-have-adhd/skills/i-have-adhd ~/.config/zed/skills/
+mkdir -p ~/.agents/skills
+cp -R i-have-adhd/skills/i-have-adhd ~/.agents/skills/
 ```
 
 ### 확인
@@ -532,7 +533,7 @@ Agent Panel에서 Skills 관리자를 열어 `i-have-adhd`가 목록에 있는�
 
 ### 제거
 
-Skills 관리자에서 `i-have-adhd`를 제거하거나 `~/.config/zed/skills/i-have-adhd`를 삭제하세요.
+Skills 관리자에서 `i-have-adhd`를 제거하거나 `~/.agents/skills/i-have-adhd`를 삭제하세요.
 
 ### 항상 활성화(선택 사항)
 

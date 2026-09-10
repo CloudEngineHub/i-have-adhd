@@ -519,7 +519,8 @@ Muốn dùng hệ thống tệp? Clone repo và đặt thư mục skill vào th�
 
 ```bash
 git clone https://github.com/ayghri/i-have-adhd
-cp -R i-have-adhd/skills/i-have-adhd ~/.config/zed/skills/
+mkdir -p ~/.agents/skills
+cp -R i-have-adhd/skills/i-have-adhd ~/.agents/skills/
 ```
 
 ### Xác minh
@@ -532,7 +533,7 @@ Nhập lại từ cùng URL (ghi đè), hoặc sao chép lại thư mục sau `g
 
 ### Gỡ cài đặt
 
-Xóa `i-have-adhd` khỏi trình quản lý Skills, hoặc xóa `~/.config/zed/skills/i-have-adhd`.
+Xóa `i-have-adhd` khỏi trình quản lý Skills, hoặc xóa `~/.agents/skills/i-have-adhd`.
 
 ### Luôn bật (không bắt buộc)
 
