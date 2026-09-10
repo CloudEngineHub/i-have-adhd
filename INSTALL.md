@@ -631,7 +631,7 @@ Prefer the filesystem? Clone the repo and drop the skill folder into your user s
 
 ```bash
 git clone https://github.com/ayghri/i-have-adhd
-cp -R i-have-adhd/skills/i-have-adhd ~/.config/zed/skills/
+cp -R i-have-adhd/skills/i-have-adhd ~/.agents/skills/
 ```
 
 ### Verify
@@ -644,7 +644,7 @@ Re-import from the same URL (overwrites), or re-copy the folder after `git pull`
 
 ### Uninstall
 
-Remove `i-have-adhd` from the Skills manager, or delete `~/.config/zed/skills/i-have-adhd`.
+Remove `i-have-adhd` from the Skills manager, or delete `~/.agents/skills/i-have-adhd`.
 
 ### Always-on (optional)
 

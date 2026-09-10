@@ -626,7 +626,7 @@ https://github.com/ayghri/i-have-adhd/blob/main/skills/i-have-adhd/SKILL.md
 
 ```bash
 git clone https://github.com/ayghri/i-have-adhd
-cp -R i-have-adhd/skills/i-have-adhd ~/.config/zed/skills/
+cp -R i-have-adhd/skills/i-have-adhd ~/.agents/skills/
 ```
 
 ### 確認
@@ -639,7 +639,7 @@ Agent Panel で Skills マネージャーを開き、`i-have-adhd` が一覧に�
 
 ### アンインストール
 
-Skills マネージャーから `i-have-adhd` を削除するか、`~/.config/zed/skills/i-have-adhd` を削除します。
+Skills マネージャーから `i-have-adhd` を削除するか、`~/.agents/skills/i-have-adhd` を削除します。
 
 ### 常時有効（任意）
 

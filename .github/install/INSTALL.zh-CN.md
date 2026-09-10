@@ -519,7 +519,7 @@ https://github.com/ayghri/i-have-adhd/blob/main/skills/i-have-adhd/SKILL.md
 
 ```bash
 git clone https://github.com/ayghri/i-have-adhd
-cp -R i-have-adhd/skills/i-have-adhd ~/.config/zed/skills/
+cp -R i-have-adhd/skills/i-have-adhd ~/.agents/skills/
 ```
 
 ### 验证
@@ -532,7 +532,7 @@ cp -R i-have-adhd/skills/i-have-adhd ~/.config/zed/skills/
 
 ### 卸载
 
-从 Skills 管理器中移除 `i-have-adhd`，或删除 `~/.config/zed/skills/i-have-adhd`。
+从 Skills 管理器中移除 `i-have-adhd`，或删除 `~/.agents/skills/i-have-adhd`。
 
 ### 始终启用（可选）
 
