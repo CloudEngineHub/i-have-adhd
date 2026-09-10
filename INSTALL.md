@@ -56,6 +56,61 @@ Exceptions: explain fully when asked to explain. Confirm before destructive acti
 </details>
 
 <details>
+<summary><strong>AstronClaw (custom skill)</strong></summary>
+
+AstronClaw supports importing a Markdown file as a custom skill. This route uses
+the existing `SKILL.md`; see its [official skills guide](https://github.com/iflytek/astronclaw-tutorial/blob/main/docs/guide/astronclaw/skills.md)
+for the upload and management controls.
+
+### Install
+
+1. Download the [canonical SKILL.md](https://raw.githubusercontent.com/ayghri/i-have-adhd/main/skills/i-have-adhd/SKILL.md) and save it as `SKILL.md`. Review its contents before uploading.
+2. In AstronClaw, open **我的技能 (My skills)**, choose **新建 (New)**, and upload that `.md` file.
+3. Check that the imported skill is named `i-have-adhd`. Use **启用/禁用 (Enable/Disable)** to control its availability.
+
+Only the skill Markdown is needed. Uploading sends that file to AstronClaw;
+the repository's plugin manifests and hooks are not part of this setup.
+
+### Verify and activate
+
+Confirm `i-have-adhd` appears in **My skills**. Use **下载 (Download)** to review
+the imported instructions against the original skill, then enable it and try:
+
+```text
+Use the i-have-adhd skill for this conversation. Explain how to create an empty Git repository in a new folder.
+```
+
+Check that the reply leads with the action and numbers the steps. This is a
+manual check of the imported skill; a successful upload alone does not verify
+that its response rules are being applied.
+
+### Activation note
+
+AstronClaw supports both explicit requests and automatic skill invocation.
+Its guide does not specify whether it honors `disable-model-invocation: true`,
+so use **Disable** when you do not want the skill available. There is no need
+to rely on a `/i-have-adhd` slash command.
+
+The skill instructs the assistant to keep the style for the conversation until
+you say `stop adhd mode` or `normal mode`. That instruction does not change the
+platform toggle; disable the skill and start a new conversation for a fresh
+session without it.
+
+### Update
+
+Download the latest canonical `SKILL.md`. If you customized the imported copy,
+use **下载 (Download)** to keep a backup first. For a clean replacement, delete
+the old `i-have-adhd` entry, repeat the import, and run the verification prompt
+in a new conversation.
+
+### Uninstall
+
+In **My skills**, select `i-have-adhd` and choose **删除 (Delete)**, then start a
+new conversation. To keep the imported copy for later, choose **Disable** instead.
+
+</details>
+
+<details>
 <summary><strong>Claude Code</strong></summary>
 
 ### Install

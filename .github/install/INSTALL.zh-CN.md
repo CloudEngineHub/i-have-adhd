@@ -56,6 +56,56 @@ agy plugin uninstall i-have-adhd
 </details>
 
 <details>
+<summary><strong>AstronClaw（自定义技能）</strong></summary>
+
+AstronClaw 支持将 Markdown 文件导入为自定义技能。此方式使用现有的 `SKILL.md`；
+上传和管理入口参见[官方技能指南](https://github.com/iflytek/astronclaw-tutorial/blob/main/docs/guide/astronclaw/skills.md)。
+
+### 安装
+
+1. 下载[技能源文件 SKILL.md](https://raw.githubusercontent.com/ayghri/i-have-adhd/main/skills/i-have-adhd/SKILL.md)，保存为 `SKILL.md`，上传前先阅读文件内容。
+2. 在 AstronClaw 中打开**我的技能**，选择**新建**，上传该 `.md` 文件。
+3. 确认导入后的技能名称为 `i-have-adhd`，通过**启用/禁用**控制技能是否可用。
+
+只需上传技能 Markdown 文件。上传会将该文件发送给 AstronClaw；
+本仓库的插件清单和钩子不参与此安装流程。
+
+### 验证与启用
+
+确认**我的技能**中出现 `i-have-adhd`，通过**下载**将导入后的指令与原始技能对照检查，
+然后启用并尝试输入：
+
+```text
+请在本次对话中使用 i-have-adhd 技能。说明如何在新文件夹中创建一个空的 Git 仓库。
+```
+
+检查回复是否先给出行动，并为步骤编号。这是对导入技能的手动检查；
+上传成功本身不能证明回复规则已经生效。
+
+### 启用说明
+
+AstronClaw 支持指定调用和自动调用技能。官方指南未说明是否遵循
+`disable-model-invocation: true`，因此不希望技能可用时，请使用**禁用**开关。
+无需依赖 `/i-have-adhd` 斜杠命令。
+
+技能要求助手在本次对话中保持该回复风格，直到你说 `stop adhd mode` 或
+`normal mode`。这条指令不会更改平台开关；如需开始不使用该技能的新会话，
+请禁用技能并开启新对话。
+
+### 更新
+
+下载最新的技能源文件 `SKILL.md`。如果修改过已导入的副本，请先使用**下载**
+保存备份。如需完整替换，请删除旧的 `i-have-adhd` 条目，重新导入文件，
+并在新对话中运行验证提示词。
+
+### 卸载
+
+在**我的技能**中选择 `i-have-adhd`，点击**删除**，然后开启新对话。
+如需保留已导入的副本以便以后使用，可选择**禁用**。
+
+</details>
+
+<details>
 <summary><strong>Claude Code</strong></summary>
 
 ### 安装
