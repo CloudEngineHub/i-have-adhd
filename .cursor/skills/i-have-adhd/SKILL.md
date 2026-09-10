@@ -102,7 +102,7 @@ Good: "Test fails at `auth.spec.ts:42`: expected 200, got 401. Cause: missing au
 
 ### 9. Rank and group long lists
 
-For long lists in the final response, group related items and rank the most relevant first. Keep the visible working set small when that improves readability.
+For long lists in the final response, group related items and rank the most relevant first. Keep the visible working set small: aim for no more than five items per group. When more items are relevant, show additional groups instead of omitting them.
 
 Never omit relevant items when completeness matters. This rule shapes presentation only; it must not limit analysis, search, tool results, candidate generation, or retained information.
 
