@@ -5,9 +5,9 @@
 //              system prompt and prints the resulting system text so tests
 //              can assert on the injected banner. Nothing is printed when the
 //              hook injects nothing (always-on flag absent).
-//   config     runs the `config` hook against an empty config object and
-//              prints the resulting config as JSON, so tests can assert on
-//              registered skills/commands without a running OpenCode server.
+//   config     runs the `config` hook twice, seeded by optional JSON at argv[4],
+//              and prints the resulting config to check registration, overrides,
+//              and idempotency without a running OpenCode server.
 import { pathToFileURL } from 'node:url';
 
 const pluginPath = process.argv[2];
@@ -16,7 +16,8 @@ const { default: init } = await import(pathToFileURL(pluginPath).href);
 const hooks = await init();
 
 if (mode === 'config') {
-  const config = {};
+  const config = JSON.parse(process.argv[4] || "{}");
+  await hooks.config(config);
   await hooks.config(config);
   process.stdout.write(JSON.stringify(config));
 } else {
