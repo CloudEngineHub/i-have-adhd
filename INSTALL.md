@@ -615,7 +615,7 @@ qwen extensions uninstall i-have-adhd
 <details>
 <summary><strong>Zed</strong></summary>
 
-Zed's Agent reads Agent Skills natively: the same `SKILL.md`, no conversion. (Zed's older "Rules" were replaced by Skills plus `AGENTS.md` instructions.)
+Zed's Agent reads Agent Skills natively using the same SKILL.md format without conversion. Note that Zed's older "Rules" have been replaced by Skills alongside AGENTS.md instructions.
 
 ### Install
 
